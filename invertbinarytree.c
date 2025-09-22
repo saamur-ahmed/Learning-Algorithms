@@ -1,14 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Define Node structure
+// Node structure
 typedef struct Node {
     int data;
     struct Node* left;
     struct Node* right;
 } Node;
 
-// Function to create a new node
+// create a new node
 Node* createNode(int data) {
     Node* newNode = (Node*)malloc(sizeof(Node));
     
@@ -22,7 +22,7 @@ Node* createNode(int data) {
     return newNode;
 }
 
-// Function to invert the binary tree (mirror)
+// invert the binary tree (mirror)
 void mirror(Node* root) {
     if (root == NULL)
         return;
@@ -37,14 +37,14 @@ void mirror(Node* root) {
     root->right = temp;
 }
 
-// Function to print the tree level by level
+// print the tree level by level
 void levelOrder(Node* root) {
     if (root == NULL) {
         printf("Tree is empty.\n");
         return;
     }
 
-    Node* queue[100];  // simple fixed-size queue for demo
+    Node* queue[100];  // fixed size queue for demo
     int front = 0, rear = 0;
 
     queue[rear++] = root;
@@ -60,16 +60,16 @@ void levelOrder(Node* root) {
                 queue[rear++] = curr->left;
                 queue[rear++] = curr->right;
             } else {
-                printf("N ");  // indicate null child
+                printf("N ");  // indicates null child
             }
         }
-        printf("\n");  // new line after finishing this level
+        printf("\n");  // new line after finishing the level
     }
 }
 
-// Driver code to test
+// Driver code for testing
 int main() {
-    /* Construct the following tree:
+    /* in this driver we will construct the following tree:
             1
            / \
           2   3
