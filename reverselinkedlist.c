@@ -3,7 +3,7 @@
 
 struct Node {
     int data;
-    struct Node *next
+    struct Node *next;
 };
 
 //creating a new node
@@ -39,7 +39,7 @@ struct Node* reverseList(struct Node *head){
 
 //printing
 
-void printlist(struct Node *head) {
+void printList(struct Node *head) {
     while (head != NULL) {
         printf("%d -> ", head->data);
         head = head->next;
@@ -59,3 +59,31 @@ void freeList(struct Node *head){
     }
 }
 
+int main(void){
+    struct Node *head = createNode(10);
+
+    if (head == NULL) return 1;
+
+    head->next = createNode(20);
+    if(head->next == NULL){
+        freeList(head);
+        return 1;
+    }
+
+    head->next->next = createNode(30);
+    if (head->next->next == NULL) freeList(head); return 1;
+    
+
+    printf("Original List:\n");
+    printList(head);
+
+    head = reverseList(head);
+    
+    printf("Reversed List:\n");
+    printList(head);
+
+    freeList(head);
+
+    return 0;
+
+}
