@@ -48,3 +48,25 @@ bool isValid(const char *s) {
 
 }
 
+int main(void) {
+    const char *tests[] = {
+        "()",
+        "()[]{}",
+        "([{}])",
+        "(]",
+        "([)]",
+        "((({[{}]})))",
+        "((("
+    };
+
+    int count = sizeof(tests) / sizeof(tests[0]);
+
+    for (int i = 0; i < count; i++) {
+        printf("%s -> %s\n",
+               tests[i],
+               isValid(tests[i]) ? "Valid" : "Invalid");
+    }
+
+    return 0;
+}
+
