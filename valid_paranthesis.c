@@ -21,9 +21,30 @@ bool isValid(const char *s) {
         if (c == '(' || c == '[' || c == '{') {
             stack[++top] = c;
         }
+        else{
+            if (top == -1) {
+                free(stack);
+                return false;
+            }
+
+            char opening = stack[top--];
+
+            if ((c == ')' && opening != '(') || 
+                (c == ']' && opening != '[') ||
+                (c == '}' && opening != '{')) {
+
+                
+                free(stack);
+                return false;
+        }
+        
     }
+}
+// this is valid only if stack is empty
+    bool valid = (top == -1);
 
-
-
+    free(stack);
+    return valid;
 
 }
+
