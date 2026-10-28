@@ -47,3 +47,14 @@ struct Node *mergeLists(struct Node *list1, struct Node *list2){
 
     return dummy.next;
 }
+
+void printList(struct Node *head){
+    while (head != NULL){
+        printf("%d", head->data);
+        if (head->next != NULL){
+            printf(" -> ");
+        }
+        head=head->next;
+    }
+    printf(" -> NULL\n");
+}
