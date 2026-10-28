@@ -58,3 +58,12 @@ void printList(struct Node *head){
     }
     printf(" -> NULL\n");
 }
+
+void freeList(struct Node *head){
+    while (head != NULL){
+        struct Node *next = head->next;
+        free(next);
+        head = next;
+    }
+}
+
