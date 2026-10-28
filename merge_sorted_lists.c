@@ -62,8 +62,32 @@ void printList(struct Node *head){
 void freeList(struct Node *head){
     while (head != NULL){
         struct Node *next = head->next;
-        free(next);
+        free(head);
         head = next;
     }
 }
 
+int main(void){
+    struct Node *list1 = createNode(1);
+    list1->next = createNode(3);
+    list1->next->next = createNode(5);
+
+    struct Node *list2 = createNode(2);
+    list2->next = createNode(4);
+    list2->next->next = createNode(6);
+
+    printf("List 1: ");
+    printList(list1);
+
+    printf("List 2: ");
+    printList(list2);
+
+    //merging bom it shld work
+    struct Node *merged = mergeLists(list1,list2);
+
+    printf("Merging done\n");
+    printList(merged);
+    freeList(merged);
+    return 0;
+
+}
